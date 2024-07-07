@@ -1,3 +1,6 @@
+// какльуятор для академии
+// ввод числе происходит в одну сротку, например "5 + 6"
+// в следующей строке будет ответ, например " = 11"
 package main
 
 import (
@@ -26,7 +29,7 @@ func main() {
 	fmt.Scan(&num11)
 	fmt.Scan(&oper)
 	fmt.Scan(&num12)
-
+// проверки на исключения
 	if (strings.ContainsAny(num11, "0123456789") && strings.ContainsAny(num12, "IVXCL")) ||
 		(strings.ContainsAny(num12, "0123456789") && strings.ContainsAny(num11, "IVXCL")) {
 		panic("разные типы цифр")
@@ -41,7 +44,7 @@ func main() {
 		if number1 > 10 || number2 > 10 {
 			panic("калькулятор не может работать с числами больше 10")
 		}
-
+// счет арабских чисел
 		switch oper {
 		case "+":
 			fmt.Print("=", number1+number2)
@@ -58,7 +61,7 @@ func main() {
 			panic("неверный знак")
 		}
 	} else {
-
+// счет римских чисел
 		number1 = romanToInt(num11)
 		number2 = romanToInt(num12)
 
@@ -92,7 +95,7 @@ func main() {
 
 	}
 }
-
+//преобразование арабских чисел в римские
 func integerToRoman(number int) string {
 	maxRomanNumber := 1000
 	if number > maxRomanNumber {
@@ -128,6 +131,7 @@ func integerToRoman(number int) string {
 
 	return roman.String()
 }
+// преобразование римских чисел в арабские
 func romanToInt(s string) int {
 	rMap := map[string]int{"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
 	result := 0
